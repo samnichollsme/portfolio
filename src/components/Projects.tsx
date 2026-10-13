@@ -18,7 +18,7 @@ export const Projects = () => {
         <SectionHeading
           index="01 / Projects"
           title="Selected work"
-          description="New projects are in the works. Check back soon — or follow along on GitHub in the meantime."
+          description="New projects are in the works. Check back soon to see what I've been building."
         />
 
         <div className="relative mt-10">

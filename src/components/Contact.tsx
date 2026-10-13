@@ -22,7 +22,7 @@ const channels: Channel[] = [
   },
   {
     label: 'LinkedIn',
-    handle: 'Samuel Nicholls',
+    handle: site.name,
     href: site.socials.linkedin,
     Icon: LinkedInIcon,
     glow: 'group-hover:shadow-accent/25 group-hover:border-accent/40 group-hover:text-accent',
