@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
+import { site } from '../data/site'
 
 const links = [
   { href: '#projects', label: 'Projects' },
   { href: '#contact', label: 'Contact' },
 ]
 
-export function Nav() {
+export const Nav = () => {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -21,16 +22,13 @@ export function Nav() {
         aria-label="Main"
         className={`mx-auto flex max-w-5xl items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 sm:px-5 ${
           scrolled
-            ? 'border-white/10 bg-neutral-950/70 shadow-lg shadow-black/20 backdrop-blur-xl'
+            ? 'border-white/10 bg-neutral-950/70 shadow-black/20 shadow-lg backdrop-blur-xl'
             : 'border-transparent bg-transparent'
         }`}
       >
-        <a
-          href="#top"
-          className="font-display text-lg font-bold tracking-tight text-white"
-          aria-label="Samuel Nicholls, back to top"
-        >
+        <a href="#top" className="font-bold font-display text-lg text-white tracking-tight">
           SN<span className="text-accent">.</span>
+          <span className="sr-only"> {site.name}, back to top</span>
         </a>
         <ul className="flex items-center gap-1 text-sm">
           {links.map((link) => (

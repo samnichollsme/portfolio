@@ -1,15 +1,13 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 
   /* Single accent colour — change this to re-theme the site */
   --color-accent: #ff7a45;
 
   --animate-fade-up: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-  --animate-float: float 14s ease-in-out infinite;
-  --animate-shimmer: shimmer 2.4s linear infinite;
 
   @keyframes fade-up {
     from {
@@ -21,31 +19,19 @@
       transform: translateY(0);
     }
   }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-    50% {
-      transform: translate(30px, -40px) scale(1.08);
-    }
-  }
-
-  @keyframes shimmer {
-    from {
-      background-position: -200% 0;
-    }
-    to {
-      background-position: 200% 0;
-    }
-  }
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Keeps anchor targets and keyboard-focused elements clear of the fixed nav */
+    scroll-padding-top: 6rem;
     color-scheme: dark;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
   }
 
   body {
@@ -61,7 +47,9 @@
   *,
   *::before,
   *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: reduced-motion must override every component animation */
     animation: none !important;
+    /* biome-ignore lint/complexity/noImportantStyles: reduced-motion must override every component transition */
     transition: none !important;
   }
 }

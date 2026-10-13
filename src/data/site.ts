@@ -1,12 +1,11 @@
 export const site = {
-  name: 'Samuel Nicholls',
+  name: 'Sam Nicholls',
   role: 'Senior Front-End Engineer',
   location: 'England, UK',
-  email: 'samuelnicholls32@gmail.com',
+  email: 'contact@samnicholls.me',
   socials: {
-    linkedin: 'https://uk.linkedin.com/in/samuel-nicholls-576253133',
-    twitter: 'https://twitter.com/SamuelNicholls_',
-    github: 'https://github.com/samuelnicholls',
+    linkedin: 'https://www.linkedin.com/in/sam-nicholls-576253133/',
+    github: 'https://github.com/samnichollsme',
   },
-  skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Accessibility', 'Design Systems'],
+  skills: ['React', 'TypeScript', 'Tailwind CSS', 'Accessibility', 'Design Systems'],
 } as const

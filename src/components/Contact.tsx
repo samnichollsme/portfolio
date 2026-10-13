@@ -1,4 +1,4 @@
-import { useState, type ComponentType, type SVGProps } from 'react'
+import { type ComponentType, type SVGProps, useState } from 'react'
 import { site } from '../data/site'
 import { ArrowUpRightIcon, CheckIcon, CopyIcon, LinkedInIcon, MailIcon } from './Icons'
 import { SectionHeading } from './SectionHeading'
@@ -27,10 +27,10 @@ const channels: Channel[] = [
     Icon: LinkedInIcon,
     glow: 'group-hover:shadow-accent/25 group-hover:border-accent/40 group-hover:text-accent',
     external: true,
-  }
+  },
 ]
 
-function CopyEmailButton() {
+const CopyEmailButton = () => {
   const [copied, setCopied] = useState(false)
 
   const copy = async () => {
@@ -44,20 +44,25 @@ function CopyEmailButton() {
   }
 
   return (
-    <button
-      type="button"
-      onClick={copy}
-      className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-neutral-300 transition hover:border-white/20 hover:bg-white/10 hover:text-white"
-    >
-      {copied ? <CheckIcon className="size-4 text-accent" /> : <CopyIcon className="size-4" />}
-      <span aria-live="polite">{copied ? 'Copied!' : 'Copy email'}</span>
-    </button>
+    <>
+      <button
+        type="button"
+        onClick={copy}
+        className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 font-medium text-neutral-300 text-sm transition hover:border-white/20 hover:bg-white/10 hover:text-white"
+      >
+        {copied ? <CheckIcon className="size-4 text-accent" /> : <CopyIcon className="size-4" />}
+        {copied ? 'Copied!' : 'Copy email'}
+      </button>
+      <span role="status" className="sr-only">
+        {copied ? 'Email address copied to clipboard' : ''}
+      </span>
+    </>
   )
 }
 
-export function Contact() {
+export const Contact = () => {
   return (
-    <section id="contact" className="scroll-mt-24 py-12 sm:py-16">
+    <section id="contact" className="py-12 sm:py-16">
       <div className="mx-auto max-w-5xl px-6">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <SectionHeading
@@ -85,8 +90,9 @@ export function Contact() {
                   <ArrowUpRightIcon className="size-5 text-neutral-600 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
                 </div>
                 <div>
-                  <p className="font-display text-lg font-semibold text-white">{label}</p>
-                  <p className="mt-1 truncate text-sm text-neutral-500">{handle}</p>
+                  <p className="font-display font-semibold text-lg text-white">{label}</p>
+                  <p className="mt-1 truncate text-neutral-400 text-sm">{handle}</p>
+                  {external && <span className="sr-only"> (opens in new tab)</span>}
                 </div>
               </a>
             </li>
